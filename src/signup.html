@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro </title>
+  <script src="./js/app.js"></script>
+</head>
+
+<body
+  x-data="{ page: 'signup', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+  x-init="
+        darkMode = JSON.parse(localStorage.getItem('darkMode'));
+        $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+  :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}">
+  <!-- ===== Preloader Start ===== -->
+  <include src="./partials/preloader.html"></include>
+  <!-- ===== Preloader End ===== -->
+
+  <!-- ===== Página Principal Inicio ===== -->
+  <div class="flex h-screen overflow-hidden">
+    <!-- ===== Barra Lateral Inicio ===== -->
+    <include src="./partials/sidebar.html" />
+    <!-- ===== Barra Lateral Fin ===== -->
+
+    <!-- ===== Área de Contenido Inicio ===== -->
+    <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+      <!-- ===== Encabezado Inicio ===== -->
+      <include src="./partials/header.html" />
+      <!-- ===== Encabezado Fin ===== -->
+
+      <!-- ===== Contenido Principal Inicio ===== -->
+      <main>
+        <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+          <!-- Migas de Pan Inicio -->
+          <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h2 class="text-title-md2 font-bold text-black dark:text-white">
+              Registro
+            </h2>
+
+            <nav>
+                <ol class="flex items-center gap-2">
+                  <li>
+                    <a class="font-medium" href="index.html">Panel /</a>
+                  </li>
+                  <li class="font-medium text-primary">Registro</li>
+                </ol>
+              </nav>
+            </div>
+            <!-- Breadcrumb End -->
+
+            <!-- ====== Forms Section Start -->
+            <div class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+              <div class="flex flex-wrap items-center">
+                <div class="hidden w-full xl:block xl:w-1/2">
+                  <div class="px-26 py-17.5 text-center">
+                    <a class="mb-5.5 inline-block" href="index.html">
+                      <img class="hidden dark:block" src="./images/logo/TaskMaster.png" alt="Logo" />
+                      <img class="dark:hidden" src="./images/logo/TaskMaster.png" alt="Logo" />
+                    </a>
+            
+                    <p class="font-medium 2xl:px-20">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                      suspendisse.
+                    </p>
+            
+                    <span class="mt-15 inline-block">
+                      <img src="./images/illustration/illustration-03.svg" alt="Ilustración" />
+                    </span>
+                  </div>
+                </div>
+                <div class="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
+                  <div class="w-full p-4 sm:p-12.5 xl:p-17.5">
+                    <span class="mb-1.5 block font-medium">Empieza gratis</span>
+                    <h2 class="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
+                      Regístrate en TaskMaster
+                    </h2>
+            
+                    <form id="signupForm" action="signup" method="POST">
+                      <div class="mb-4">
+                        <label class="mb-2.5 block font-medium text-black dark:text-white">Nombre</label>
+                        <input type="text" name="nombre" placeholder="Ingresa tu nombre completo"
+                          class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
+                      </div>
+            
+                      <div class="mb-4">
+                        <label class="mb-2.5 block font-medium text-black dark:text-white">Correo Electrónico</label>
+                        <input type="email" name="email" placeholder="Ingresa tu correo electrónico"
+                          class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
+                      </div>
+            
+                      <div class="mb-4">
+                        <label class="mb-2.5 block font-medium text-black dark:text-white">Contraseña</label>
+                        <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña"
+                          class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
+                      </div>
+            
+                      <div class="mb-4">
+                        <label class="mb-2.5 block font-medium text-black dark:text-white">Confirmar Contraseña</label>
+                        <input type="password" id="confirmPassword" placeholder="Reingresa tu contraseña"
+                          class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" />
+                        <span id="passwordError" class="text-red-500 hidden">Las contraseñas no coinciden</span>
+                      </div>
+            
+                      <div class="mb-6">
+                        <input type="submit" value="Crear cuenta" id="submitButton"
+                          class="w-full cursor-pointer rounded-lg border border-primary bg-primary p-4 font-medium text-white transition hover:bg-opacity-90" />
+                      </div>
+            
+                      <div class="mt-6 text-center">
+                        <p class="font-medium">
+                          ¿Ya tienes una cuenta?
+                          <a href="signin.html" class="text-primary">Iniciar sesión</a>
+                        </p>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- ====== Sección de Formularios Fin -->
+            </div>
+            </main>
+            <!-- ===== Contenido Principal Fin ===== -->
+            </div>
+            <!-- ===== Área de Contenido Fin ===== -->
+            </div>
+            <!-- ===== Página Principal Fin ===== -->
+            
+  </body>
+            
+</html>
